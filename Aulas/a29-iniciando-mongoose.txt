@@ -1,0 +1,11 @@
+  #mongoose.js 
+    const mongoose = require('mongoose');
+    
+    //Configurando o mongoose
+    mongoose.Promise = global.Promise;
+    mongoose.connect('mongodb://localhost:27017/postapp').then(() => {
+        console.log("Mongodb conectado");
+    }).catch((erro) => {
+        console.log("Houve um erro na conexão do mongdb" + erro)
+    })
+

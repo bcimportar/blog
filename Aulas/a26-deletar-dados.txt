@@ -1,0 +1,65 @@
+index.js
+    const express = require('express');
+    const handlebars = require('express-handlebars');
+    const Post = require('./models/Post');
+    const app = express();
+
+    //Template Engine
+        app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
+        app.set('view engine', 'handlebars');
+
+    //Para receber os dados via Post
+        app.use(express.urlencoded({ extended: false }));
+        app.use(express.json());
+
+
+    app.get('/', function (req, res) {
+        Post.findAll({ order: [['id', 'DESC']] })
+            .then(function (posts) {
+                //console.log(posts);
+                res.render('home', { posts: posts });
+            });
+    })
+
+    app.get('/cad', function (req, res) {
+        res.render('formulario');
+    });
+
+    //Enviando os dados para o banco de dados
+    app.post('/usuariocontroller', function (req, res) {
+        Post.create({
+            title: req.body.title,
+            content: req.body.content
+        }).then(function () {
+            res.redirect('/'); //Redirecionando a rota
+        }).catch(function (erro) {
+            res.send('Erro em enviar o post' + erro);
+        });
+    });
+
+
+    app.get('/deletar/:id', function (req, res) {
+
+        Post.destroy({ where: { 'id': req.params.id } })
+            .then(function () {
+                res.send('Arquivo deletado com sucesso');
+            }).catch(function (erro) {
+                res.send('Está postagem não existe');
+            })
+    });
+
+
+    app.listen(8081, function () {
+        console.log("Servidor rodando na url = 'http://localhost/8081")
+    });
+
+#home.handlebars
+    <h1>Lista de Post</h1>
+    {{#posts}}
+        <h1>{{dataValues.title}}</h1>
+        <p>{{dataValues.content}}</p>
+    <a href="/deletar/{{dataValues.id}}">
+          <button>Deletar</button>
+    </a>
+    <hr>
+    {{/posts}}

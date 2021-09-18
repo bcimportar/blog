@@ -1,0 +1,40 @@
+Cria as pastas /models /views/ layouts 
+#app.js
+    //Carregando módulos
+        const express = require('express');
+        const handlebars = require('express-handlebars');
+        const bodyParser = require('body-parser');
+        const mongose = require('bodyParser');
+
+        const app = express();
+
+
+    //Configurações
+        //Body Parser
+            app.use(bodyParser.urlencoded{{ extended: true }});
+            app.use(bodyParser.json());
+            //handlebars
+            app.engine('handlebars', handlebars({ defaultLayout, 'main'}));
+            app.set('view engine', 'handlebars');
+
+        //mongose
+
+        //Rotas
+
+    //Outros
+        const PORT = 8081
+        app.listen(PORT, () => { console.log('Servidor Rodando') });
+
+#main.hanlderbars
+    <!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog NodeJS</title>
+    </head>
+    <body>
+        {{{body}}}
+    </body>
+    </html>

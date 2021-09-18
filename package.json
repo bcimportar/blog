@@ -1,0 +1,31 @@
+{
+  "name": "victor-lima",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "handlebars": "^4.7.7",
+    "mongoose": "^6.0.2",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
+    "sequelize": "^6.6.5",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-handlebars": "^5.3.1",
+    "@types/node": "^16.7.6",
+    "@types/sequelize": "^4.28.10",
+    "@types/validator": "^13.6.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon app.js"
+  
+  },
+  "author": "",
+  "license": "ISC"
+}

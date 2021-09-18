@@ -1,0 +1,7 @@
+https://dev.mysql.com/downloads/mysql/   //instalar no windows
+
+//Faz a configuração para variáveis de ambiente no path
+para o caminho C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+
+//abre commando line client  //No iniciar do windows

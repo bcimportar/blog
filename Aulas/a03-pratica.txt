@@ -1,0 +1,15 @@
+#app.js
+    console.log('Hello World')
+
+#mat
+    var num = 10;
+    var num2 = 20;
+    function somar(a, b) {
+        return a + b;
+    }
+    console.log(somar(num, num2));
+
+#nome
+    var nome='Bruno'
+    var sobrenome='Oliveira'
+    console.log(nome+' '+sobrenome);
