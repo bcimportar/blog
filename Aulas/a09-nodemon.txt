@@ -1,2 +1,0 @@
-npm install nodemon --save-dev  //Instalar pacote
-npx nodemon index.js    //Executar o index.js

@@ -1,7 +1,0 @@
-É orientado a documento
-{
-    name:"al",
-    age:18,
-    stauts:'D",
-    groups:["policts,"news"]
-}

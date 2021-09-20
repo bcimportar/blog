@@ -1,2 +1,0 @@
-npm install sequelize --save    //Instalndo a biblioteca
-npm install mysql2 --save       //Instalndo a biblioteca
