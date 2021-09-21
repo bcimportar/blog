@@ -1,10 +1,9 @@
 //Carregando módulos
 const express = require("express");
 const handlebars = require('express-handlebars');
-const bodyParser = require('body-parser');
-const mongose = require('bodyParser');
 const admin = require('./routers/admin');
-
+const mongose = require('mongoose');
+const path = require('path');
 const app = express();
 
 
@@ -14,14 +13,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //handlebars
-app.engine('handlebars', handlebars({ defaultLayout:'main'}));
+app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 //mongose
+mongose.Promise = global.Promise
+mongose.connect('mongodb://localhost/blogapp')
+.then(()=>{
+    console.log('Conectado ao mongo')
+}).catch((err)=>{
+    console.log("Erro ao se conectar:"+err)
+})
 
+//Public 
+app.use(express.static(path.join(__dirname, "public")));
 
 //Rotas
-app.use('/admin',admin);
+app.use('/admin', admin);
 
 //Outros
 const PORT = 8081
