@@ -71,13 +71,13 @@ router.post('/categorias/edit', (req, res) => {
     Categoria.findOne({ _id: req.body.id })
         .then((categoria) => {
             categoria.nome = req.body.nome,
-            categoria.slug = req.body.slug
+                categoria.slug = req.body.slug
 
-            categoria.save().then(()=>{
-                req.flash("success_msg","Categoria editado com sucesso");
+            categoria.save().then(() => {
+                req.flash("success_msg", "Categoria editado com sucesso");
                 res.redirect("/admin/categorias")
-            }).catch((err)=>{
-                req.flash("error_msg","Houve um erro interno ao salvar a edição da categoria")
+            }).catch((err) => {
+                req.flash("error_msg", "Houve um erro interno ao salvar a edição da categoria")
                 res.redirect("/admin/categorias")
             })
         })
@@ -86,4 +86,15 @@ router.post('/categorias/edit', (req, res) => {
             res.redirect("/admin/categorias")
         })
 })
+
+router.post("/categorias/deletar", ((req, res) => {
+    Categoria.deleteOne({ _id: req.body.id }).then(() => {
+        req.flash("success_msg", "Categoria deletada com sucesso")
+        res.redirect("/admin/categorias")
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao  deletar categoria")
+        //res.redirect("/admin/categorias")
+        
+    })
+}))
 module.exports = router
